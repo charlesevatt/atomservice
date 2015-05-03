@@ -8,6 +8,8 @@
 # asset version: 1.0.2
 # asset summary: 'Python module which creates a custom named process, executes a sequence of processes in order, whilst creating its own audit log. All configurable by using a configuration file.'
 
+# Aug 10, 2011: Removed deprecated os.spawnvp previously called to spawn sub-process. Now uses subprocess.call. Compatible with RHEL 6, Python 2.6.5
+
 # Copyright (c) 2010, VIAVIA Solutions Ltd.
 # All rights reserved.
 
