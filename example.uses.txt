@@ -1,0 +1,27 @@
+atomservice / example uses
+
+- Example use 1: Text file analysis and emailing
+
+User A has a requirement to monitor a selection of text files for the presence of specific text and send an email based on the content, so has written the following Python scripts:
+
+Script 1: For each text file in /var/as-test/textfiles/, if it contains the string 'Yes', drop file into /var/as-test/yes/ if does not contain 'Yes', drop into /var/as-test/no/
+
+Script 2: For each file in /var/as-test/yes/, send an email to someone with the subject line 'filename - Contains the word Yes!'
+
+In this scenario, User A can configure the Atom Service so that these two scripts are executed automatically in order at a specified frequency. Any text files dropped into the input folder will be analysed and an email sent if necessary, without any human intervention.
+
+Example 1 demo download
+Please feel free to download http://atomservice.googlecode.com/files/demoproject.atomservice.v1.0.0.tar.gz, a demo project based on this example.
+
+- Example use 2: Image resizing and uploading
+
+
+User B has a requirement to resize thousands of .JPG images 24/7 and upload them to an Amazon S3 account. User B finds the process of doing this very tedious, so has written the following Python scripts:
+
+Script A: For each image in /var/as-images/for-resize/, resize to 200 pixels wide and output to /var/as-images/resized/
+
+Script B: For each image in /var/as-images/resized/, upload to Amazon S3, and on success move to /var/as-images/upload-archive/ and update a MySQL database table with this new status
+
+In this scenario, User B can configure the Atom Service so that these two scripts are executed automatically in order at a specified frequency. Any image files dropped into the input folder will be resized and uploaded without any human intervention, and have their status logged in a database for later reporting.
+
+User B may find that business is booming because of the new found automation and that the image processing becomes a bottleneck! In this case, the image resizing process could be distributed across a number of hosts, allowing parallel processing.

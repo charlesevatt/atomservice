@@ -1,0 +1,47 @@
+<html>
+<head>
+<title>atomservice.configurationfile.about.html</title>
+</head>
+<body>
+<div id="wikicontent">
+ <div class="vt" id="wikimaincol">
+ <h1><a name="Introduction"></a>Introduction<a href="#Introduction" class="section_anchor"></a></h1><p>The configuration file associated with a specific Atom Service instance dictates what, and how often the service will actually do. </p><p>As such it is very important to get your configuration right for the needs of your system. </p><h1><a name="Variables_configurable_in_an_Atom_Service_configuration_file"></a>Variables configurable in an Atom Service configuration file<a href="#Variables_configurable_in_an_Atom_Service_configuration_file" class="section_anchor"></a></h1><p><table border="1" cellpadding="5"> </p><p><tr> <blockquote><td><strong>Variable name</strong></td> 
+<td><strong>Data type</strong></td> 
+<td><strong>Description</strong></td> 
+<td><strong>Typical value(s)</strong></td> 
+</blockquote></tr> </p><p><tr> <blockquote><td><strong>POLL_INTERVAL</strong></td> 
+<td>Integer</td> 
+<td>Interval in seconds between process list polls. The daemon sleeps for POLL_INTERVAL seconds once all processes are executed. Set this to a non-negative value, or set to zero to disable sleeping.</td> 
+<td>30</td> 
+</blockquote></tr> </p><p><tr> <blockquote><td><strong>PROC_INTERVAL</strong></td> 
+<td>Integer</td> 
+<td>Similar to POLL_INTERVAL, this value specifies the duration in seconds of inter-process sleep</td> 
+<td>5</td> 
+</blockquote></tr> </p><p><tr> <blockquote><td><strong>AUDIT_LEVEL</strong></td> 
+<td>Constant from <a href="http://docs.python.org/library/logging.html" rel="nofollow">Python logging module</a></td> 
+<td>Logging level</td> 
+<td><tt>DEBUG, INFO, WARNING, ERROR</tt> or <tt>CRITICAL</tt></td> 
+</blockquote></tr> </p><p><tr> <blockquote><td><strong>NAME</strong></td> 
+<td>String</td> 
+<td>Name of the created daemon to the host system. Shows in the process list.</td> 
+<td>Any name</td> 
+</blockquote></tr> </p><p><tr> <blockquote><td><strong>LOGFOLDER</strong></td> 
+<td>String</td> 
+<td>Specifies folder in which to store log files. <em>New in v.1.0.1</em></td> 
+<td>Any valid, writable path</td> 
+</blockquote></tr> </p><p><tr> <blockquote><td><strong>PIDFOLDER</strong></td> 
+<td>String</td> 
+<td>Specifies folder in which to store PID files. <em>New in v.1.0.1</em></td> 
+<td>Any valid, writable path</td> 
+</blockquote></tr> </p><p><tr> <blockquote><td><strong>PROC_LIST</strong></td> 
+<td>Array</td> 
+<td><p>Contains the list of processes to execute in sequence. First element contains the name you wish the created process to be called and the path to the script to execute, and the second element is an array which can contain a set of arguments to pass to the script executed.</p> 
+</blockquote><p>n.b. If you include a direct path to a script as the process to execute, the script must have executable permissions.</p></td> <blockquote><td><p>Include a line such as:</p> 
+</blockquote><p><tt>PROC_LIST.append(Exe(&#x27;processname&#x27;, os.path.abspath(&#x27;myprocess.py&#x27;), [&#x27;somedata&#x27;, 12345]) )</tt></p> <p>Leave the second argument blank if no arguments to be passed e.g.:</p> <p><tt>PROC_LIST.append(Exe(&#x27;processname&#x27;, os.path.abspath(&#x27;myprocess.py&#x27;), [&#x27;&#x27;]) )</tt></p></td> </p><p></tr> </table> </p>
+ </div>
+ </div>
+ </td><tr>
+</table>
+ </div>
+ </body>
+ </html>

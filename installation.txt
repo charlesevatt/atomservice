@@ -1,0 +1,78 @@
+atomservice / Installation and Configuration
+
+-Requirements
+
+--Platform / software
+Linux (Red Hat, Fedora etc.)
+Python 2.4, 2.5, 2.6
+
+--Dependencies
+
+The Atom Service daemon requires a compiled installation of the procname module available from https://github.com/charlesevatt/procname, as procname.so.
+
+Note that headers will need to be edited according to the version of Python on the target system. After compilation, place the procname.so file in a system folder where it will be accessible to Python from the whole system.
+
+Helpful hints: You need the python-devel and gcc packages installed to compile procname.so, and also need to update line 5 of the Procname makefile to your version of Python.
+Setup
+Installation and configuration
+It is very important to plan in advance the tasks and processes the Atom Service will be executing as part of your wider system and process review.
+
+We strongly recommended that you prepare the processes that the Atom Service will be calling, debug and test them thoroughly manually before triggering them from this automated system.
+
+When you are ready....
+
+* Download the atomservice.v1.0.0.tar.gz archive
+* Unpack the files into a folder of your choosing
+* Set up your configuration file, using the Atom Service configuration file documentation as reference
+
+-Controlling the service
+
+The Atom Service takes 2 arguments to be controlled:
+
+* path to configuration file
+* start, restart or stop
+
+Here are some examples:
+
+as.py as.config.py start
+as.py as.config.py stop
+as.py as.config.py restart
+
+The above commands will only function from the command line if you have cd'ed to the folder containing the Atom Service python scripts. Otherwise you must give the full path to the as.py and the as.config.py scripts, as follows:
+
+/path/to/as.py /path/to/as.config.py start
+
+-Multiple instances
+
+It is possible to run multiple instances of the Atom Service on one machine, with different configuration files and different process names.
+
+To set up multiple instances, copy the unarchived Python scripts into multiple folders as necessary, and edit each configuration file as required. Start each version individually and watch the processes execute!
+
+—-Config file reload
+
+Note that the configuration file is reloaded at the beginning of each execution loop, and as such changes saved will affect the live production system.
+
+If required, the configuration file could have its variables generated at run-time in response to database or file system changes, for further flexibility and control.
+
+See atomservice_execution_sequence.png for further information.
+
+-Monitoring and troubleshooting the service
+
+--Location of Log and Process Identifier files
+
+The log file for the Atom Service instance created can be found at /tmp/instancename.log. The Atom Service will log events to the audit level as requested in the config file, with DEBUG being the most verbose/frequent, and CRITICAL occuring only on serious errors.
+
+The pidfile (Process IDentifier file) for the Atom Service instance created can be found at /tmp/instancename.pid.
+
+Example: If NAME variable = 'foobar', the log for the named Atom Service process will be found at tmp/foobar.log, and it's pidfile can be found at tmp/foobar.pid.
+
+--Logging limitation
+
+Note that the Atom Service logs only contain messages from the Atom Service instance itself, its execution and it's ability to call it's processes.
+
+Any logging or auditing of sub-processes should be done within the scope of those processes.
+
+--Aggressive pidfile deletion
+
+If an Atom Service instance or sub-process is aggressively killed, then its pidfile may have to be deleted before the instance can be successfully started again.
+
