@@ -1,0 +1,6 @@
+No this file does not contain the word Y E S
+Because it is meant to demonstrate that this file will get dropped into the No folder.
+Another line not including that critical word
+And another
+THE END
+

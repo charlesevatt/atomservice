@@ -1,0 +1,4 @@
+Yes this file contains the word Yes
+And this is great
+Because when run inside the demo script
+Yes it will drop to the Yes folder.

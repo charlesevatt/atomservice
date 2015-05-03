@@ -1,0 +1,44 @@
+ATOM SERVICE
+------------
+
+!! Please see the associated LICENCE file for licensing information !!
+
+Instructions for as_demo installation
+-------------------------------------
+
+1. Unpack archive into suitable location
+
+2. Change line 66 of as_demo/as.democonfig.py to the location of the unpacked folders
+
+3. Change line 32 on as_demo/02_processes/01_search_for_yes.py to the location of the unpacked watchfolders/ folder
+
+4. Change line 32 on as_demo/02_processes/02_monitor_yes.py to the location of the unpacked watchfolders/ folder
+
+5. Change line 32 on as_demo/02_processes/03_monitor_no.py to the location of the unpacked watchfolders/ folder
+
+6. Follow the instructions regarding Dependencies found here: http://code.google.com/p/atomservice/wiki/InstallationAndConfiguration, and put the procname.so in the as_demo/01_atomservice folder
+
+7. Give executable permissions to all the scripts in 02_processes, either using GUI or chmod
+
+8. Read the comments within the scripts in 02_processes, so that you understand what they do
+
+9. Run each script outside the Atom Service directly from command line, to evaluate whether they run, and do any debugging required
+
+10. cd to the 01_atomservice folder
+
+11. run start-atomservice_demo.sh
+
+12. Watch the demo text files move around, monitor the log files at /tmp/atomservice.demo.log, and see atomservice.demo and it's children in the process list
+
+13. Have fun and make your own processes! Report back to the project group with your findings and observations.
+
+
+
+
+
+Charlie Evatt
+VIAVIA Solutions Ltd.
+Jan 27th 2010
+
+http://code.google.com/p/atomservice/
+
